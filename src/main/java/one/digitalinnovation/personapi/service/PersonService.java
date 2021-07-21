@@ -48,4 +48,11 @@ public class PersonService {
         }
         return optionalPerson.get();
     }
+
+    public void delete(long id) throws PersonNotFoundException {
+        personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
+
+
+        personRepository.deleteById(id);
+    }
 }
